@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Factura de Deepshop</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        .title {
+            font-size: 24px;
+            color: #1f2937;
+            margin: 20px 0;
+        }
+        .invoice-number {
+            font-size: 18px;
+            color: #6366f1;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #6366f1;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🛍️ DEEPSHOP</div>
+        </div>
+        
+        <h1 class="title">Tu Factura está lista</h1>
+        <p class="invoice-number">Factura #{{invoiceNumber}}</p>
+        
+        <p>Hola,</p>
+        <p>Adjuntamos la factura de tu compra reciente en Deepshop.</p>
+        
+        <p>Puedes descargar tu factura haciendo clic en el botón de abajo o desde el archivo adjunto en este correo.</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{downloadUrl}}" class="button">Descargar Factura</a>
+        </div>
+        
+        <p>Gracias por tu compra. Esperamos verte pronto.</p>
+        
+        <div class="footer">
+            <p>&copy; 2024 Deepshop. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
