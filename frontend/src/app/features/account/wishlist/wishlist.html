@@ -1,0 +1,63 @@
+<!-- Wishlist Page -->
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+        ❤️ Mis Favoritos
+      </h1>
+      <p class="text-gray-600">
+        {{ wishlistService.count() }} producto{{ wishlistService.count() !== 1 ? 's' : '' }} guardado{{ wishlistService.count() !== 1 ? 's' : '' }}
+      </p>
+    </div>
+
+    @if (wishlistService.count() > 0) {
+      <!-- Acciones -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-8">
+        <button
+          (click)="addAllToCart()"
+          class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center space-x-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span>Agregar Todo al Carrito</span>
+        </button>
+
+        <button
+          (click)="clearWishlist()"
+          class="px-6 py-3 bg-white border border-red-300 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors flex items-center justify-center space-x-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+          </svg>
+          <span>Limpiar Lista</span>
+        </button>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        @for (product of wishlistService.items(); track product.id) {
+          <app-product-card [product]="product" />
+        }
+      </div>
+
+    } @else {
+      <!-- Lista vacía -->
+      <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+        <svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+        </svg>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Tu lista de favoritos está vacía
+        </h3>
+        <p class="text-gray-600 mb-8">
+          Guarda tus productos favoritos para encontrarlos fácilmente más tarde
+        </p>
+        <a routerLink="/catalog" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+          Explorar Productos
+        </a>
+      </div>
+    }
+
+  </div>
+</div>
