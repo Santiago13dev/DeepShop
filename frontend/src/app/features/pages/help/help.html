@@ -1,0 +1,74 @@
+<!-- Help Page -->
+<div class="min-h-screen bg-gray-50 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        ¿Cómo podemos ayudarte?
+      </h1>
+      <p class="text-xl text-gray-600">
+        Encuentra respuestas a las preguntas más frecuentes
+      </p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="max-w-2xl mx-auto mb-12">
+      <div class="relative">
+        <input
+          type="text"
+          placeholder="Buscar en ayuda..."
+          class="w-full px-6 py-4 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
+        />
+        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      @for (category of categories; track category) {
+        <button
+          (click)="selectCategory(category)"
+          class="px-6 py-2 rounded-full font-medium transition-colors"
+          [class.bg-indigo-600]="selectedCategory === category"
+          [class.text-white]="selectedCategory === category"
+          [class.bg-white]="selectedCategory !== category"
+          [class.text-gray-700]="selectedCategory !== category"
+          [class.hover:bg-gray-100]="selectedCategory !== category">
+          {{ category }}
+        </button>
+      }
+    </div>
+
+    <!-- FAQs -->
+    <div class="max-w-4xl mx-auto space-y-4">
+      @for (faq of filteredFaqs; track faq.question) {
+        <details class="bg-white rounded-lg shadow-sm group">
+          <summary class="cursor-pointer p-6 font-semibold text-lg text-gray-900 flex justify-between items-center hover:text-indigo-600 transition-colors">
+            <span>{{ faq.question }}</span>
+            <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            {{ faq.answer }}
+          </div>
+        </details>
+      }
+    </div>
+
+    <!-- Contact Section -->
+    <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+      <h2 class="text-3xl font-bold mb-4">¿No encuentras lo que buscas?</h2>
+      <p class="text-xl text-indigo-100 mb-6">
+        Nuestro equipo está aquí para ayudarte
+      </p>
+      <a routerLink="/contact" class="inline-block px-8 py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+        Contactar Soporte
+      </a>
+    </div>
+
+  </div>
+</div>

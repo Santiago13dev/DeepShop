@@ -1,0 +1,148 @@
+<!-- Offers Page -->
+<div class="min-h-screen bg-gray-50">
+  
+  <!-- Hero Banner con Countdown -->
+  <section class="bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
+          <span class="text-sm font-semibold">🔥 OFERTAS POR TIEMPO LIMITADO</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          Mega Ofertas
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 mb-8">
+          Hasta 70% de descuento en productos seleccionados
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="flex justify-center gap-4 mb-8">
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+            <div class="text-3xl font-bold">{{ timeLeft().days }}</div>
+            <div class="text-sm text-white/80">Días</div>
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+            <div class="text-3xl font-bold">{{ timeLeft().hours }}</div>
+            <div class="text-sm text-white/80">Horas</div>
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+            <div class="text-3xl font-bold">{{ timeLeft().minutes }}</div>
+            <div class="text-sm text-white/80">Minutos</div>
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+            <div class="text-3xl font-bold">{{ timeLeft().seconds }}</div>
+            <div class="text-sm text-white/80">Segundos</div>
+          </div>
+        </div>
+
+        <a routerLink="/catalog" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          Comprar Ahora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas Destacadas -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Ofertas por Categoría</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @for (offer of featuredOffers; track offer.id) {
+          <a routerLink="/catalog" class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="aspect-[4/3] relative">
+              <img [src]="offer.image" [alt]="offer.title" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-gradient-to-t" [ngClass]="offer.color + ' opacity-80'"></div>
+              
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
+                <div class="text-6xl mb-4">{{ offer.icon }}</div>
+                <h3 class="text-3xl font-bold mb-2">{{ offer.title }}</h3>
+                <p class="text-lg mb-4">{{ offer.description }}</p>
+                <div class="bg-white text-red-600 px-6 py-2 rounded-full font-bold text-xl">
+                  -{{ offer.discount }}%
+                </div>
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos en Oferta -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Productos en Oferta</h2>
+        <p class="text-lg text-gray-600">Los mejores descuentos de la temporada</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        @for (product of offerProducts(); track product.id) {
+          <app-product-card [product]="product" />
+        }
+      </div>
+
+      <div class="text-center mt-12">
+        <a routerLink="/catalog" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+          Ver Todas las Ofertas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cupones de Descuento -->
+  <section class="py-12 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Cupones de Descuento</h2>
+        <p class="text-lg text-gray-600">Usa estos códigos al finalizar tu compra</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @for (coupon of coupons; track coupon.code) {
+          <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-200">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 text-center">
+              <div class="text-2xl font-bold mb-1">{{ coupon.code }}</div>
+              @if (coupon.type === 'percentage') {
+                <div class="text-3xl font-bold">{{ coupon.discount }}% OFF</div>
+              } @else if (coupon.type === 'fixed') {
+                <div class="text-3xl font-bold">${{ coupon.discount }} OFF</div>
+              } @else {
+                <div class="text-2xl font-bold">ENVÍO GRATIS</div>
+              }
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4 text-center">{{ coupon.description }}</p>
+              <button 
+                (click)="copyCoupon(coupon.code)"
+                class="w-full px-4 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                <span>Copiar Código</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Final CTA -->
+  <section class="py-16 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <h2 class="text-4xl font-bold mb-4">¿Listo para Ahorrar?</h2>
+      <p class="text-xl mb-8 text-white/90">No pierdas estas increíbles ofertas por tiempo limitado</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a routerLink="/catalog" class="inline-block px-8 py-4 bg-white text-red-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+          Explorar Ofertas
+        </a>
+        <a routerLink="/auth/register" class="inline-block px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors">
+          Crear Cuenta
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
