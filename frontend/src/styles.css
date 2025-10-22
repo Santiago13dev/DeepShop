@@ -2,13 +2,250 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos Globales de Deepshop */
+/* =================================
+   DEEPSHOP - Estilos Globales
+   Diseño futurista inspirado en PERMIAN
+   ================================= */
 
-/* Animaciones personalizadas */
-@keyframes fadeIn {
+/* Importar fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* =================================
+   BASE STYLES
+   ================================= */
+@layer base {
+  * {
+    @apply border-dark-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-dark-bg text-gray-100 font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+  
+  code, pre {
+    @apply font-mono;
+  }
+}
+
+/* =================================
+   SCROLLBAR PERSONALIZADO (Estilo futurista)
+   ================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neon-blue/30 rounded-full;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neon-blue/50;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 217, 255, 0.3) #131826;
+}
+
+/* =================================
+   COMPONENTES PERSONALIZADOS
+   ================================= */
+@layer components {
+  
+  /* Glassmorphism */
+  .glass {
+    background: rgba(26, 34, 53, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Botones con efecto neón */
+  .btn-neon {
+    @apply relative px-6 py-3 font-semibold text-white bg-transparent border-2 border-neon-blue rounded-lg overflow-hidden;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  
+  .btn-neon::before {
+    content: '';
+    @apply absolute inset-0 bg-neon-blue opacity-0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-neon:hover {
+    @apply shadow-lg;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(0, 217, 255, 0.3);
+  }
+  
+  .btn-neon:hover::before {
+    opacity: 1;
+  }
+  
+  .btn-neon span {
+    @apply relative z-10;
+  }
+  
+  /* Card con efecto hover */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+    transform: translateY(0);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2), 0 0 60px rgba(0, 217, 255, 0.1);
+  }
+  
+  /* Grid de fondo animado */
+  .grid-background {
+    background-image: 
+      linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+  }
+  
+  /* Texto con gradiente neón */
+  .text-neon-gradient {
+    @apply bg-gradient-to-r from-neon-blue via-neon-cyan to-neon-purple bg-clip-text text-transparent;
+  }
+  
+  /* Inputs con estilo futurista */
+  .input-futuristic {
+    @apply w-full px-4 py-3 bg-dark-surface border border-dark-border rounded-lg text-white placeholder-gray-500;
+    @apply focus:outline-none focus:border-neon-blue focus:ring-2 focus:ring-neon-blue/20;
+    transition: all 0.3s ease;
+  }
+  
+  .input-futuristic:focus {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
+  }
+  
+  /* Skeleton loader animado */
+  .skeleton {
+    @apply relative bg-dark-card overflow-hidden;
+  }
+  
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 217, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Cursor personalizado (opcional) */
+  .cursor-glow {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%2300D9FF" opacity="0.5"/></svg>'), auto;
+  }
+}
+
+/* =================================
+   UTILIDADES PERSONALIZADAS
+   ================================= */
+@layer utilities {
+  
+  /* Clip de texto */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Sombras con brillo neón */
+  .shadow-neon {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  }
+  
+  .shadow-neon-lg {
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.4), 0 0 80px rgba(0, 217, 255, 0.2);
+  }
+  
+  /* Animación de aparición suave */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  /* Hover con escala y brillo */
+  .hover-scale {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  
+  /* Borde animado */
+  .border-animated {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .border-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, #00D9FF, #6B4FFF, #FF00E5, #00D9FF);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderRotate 4s linear infinite;
+  }
+  
+  @keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+/* =================================
+   ANIMACIONES ESPECÍFICAS
+   ================================= */
+
+/* Fade in desde abajo */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -16,99 +253,101 @@
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
-}
-
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Utilidades personalizadas */
-@layer utilities {
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
-
-/* Estilos base */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Transiciones suaves para todo */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-/* Botones con efecto hover mejorado */
-button, a {
-  cursor: pointer;
-}
-
-/* Inputs con mejor apariencia */
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-/* Skeleton loaders */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s ease-in-out infinite;
-}
-
-@keyframes loading {
+/* Shimmer para skeletons */
+@keyframes shimmer {
   0% {
-    background-position: 200% 0;
+    transform: translateX(-100%);
   }
   100% {
-    background-position: -200% 0;
+    transform: translateX(100%);
   }
 }
 
-/* Efectos de glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Pulse con brillo */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
+  }
 }
 
-/* Sombras personalizadas */
-.shadow-custom {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+/* Rotación continua */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.shadow-custom-lg {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+/* =================================
+   ESTADOS DE FOCUS Y HOVER
+   ================================= */
+
+/* Mejorar focus de inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Links con efecto underline animado */
+a:not(.no-underline) {
+  @apply relative;
+  text-decoration: none;
+}
+
+a:not(.no-underline)::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-[2px] bg-neon-blue;
+  transition: width 0.3s ease;
+}
+
+a:not(.no-underline):hover::after {
+  width: 100%;
+}
+
+/* =================================
+   UTILIDADES DE ACCESIBILIDAD
+   ================================= */
+
+/* Focus visible para teclado */
+:focus-visible {
+  outline: 2px solid #00D9FF;
+  outline-offset: 2px;
+}
+
+/* Reducir movimiento para usuarios con preferencias */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =================================
+   RESPONSIVE UTILITIES
+   ================================= */
+
+/* Ocultar scrollbar cuando no se necesita */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Container con padding responsive */
+.container-custom {
+  @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
 }
