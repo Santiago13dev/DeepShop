@@ -77,6 +77,13 @@ export class WishlistService {
   }
 
   /**
+   * Obtener contador de wishlist
+   */
+  getWishlistCount(): number {
+    return this.wishlistItems().length;
+  }
+
+  /**
    * Limpiar todos los favoritos
    */
   clearWishlist(): void {
