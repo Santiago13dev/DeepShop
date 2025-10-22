@@ -1,0 +1,94 @@
+<!-- Contenedor del slider -->
+<div class="product-slider-wrapper">
+  
+  <!-- Título de la sección -->
+  <div class="slider-header">
+    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-8">
+      Productos <span class="text-neon-gradient">Destacados</span>
+    </h2>
+  </div>
+
+  <!-- Swiper Container -->
+  <div class="swiper-container" #swiperContainer>
+    <div class="swiper-wrapper">
+      
+      <!-- Slide por cada producto -->
+      <div 
+        *ngFor="let product of products"
+        class="swiper-slide"
+        (click)="goToProduct(product.slug)">
+        
+        <!-- Card del producto -->
+        <div class="product-card">
+          
+          <!-- Imagen del producto -->
+          <div class="product-image-container">
+            <img 
+              [src]="product.image" 
+              [alt]="product.title"
+              class="product-image"
+              loading="lazy">
+            
+            <!-- Overlay con efecto hover -->
+            <div class="product-overlay">
+              <button 
+                class="quick-add-btn"
+                (click)="addToCart(product, $event)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span>Agregar al carrito</span>
+              </button>
+            </div>
+
+            <!-- Badge de categoría -->
+            <div class="category-badge">
+              {{ product.category }}
+            </div>
+          </div>
+
+          <!-- Información del producto -->
+          <div class="product-info">
+            <h3 class="product-title">
+              {{ product.title }}
+            </h3>
+            
+            <div class="product-price">
+              <span class="currency">$</span>
+              <span class="amount">{{ product.price }}</span>
+            </div>
+
+            <!-- Rating (opcional) -->
+            <div class="product-rating" *ngIf="product.rating">
+              <div class="stars">
+                <span *ngFor="let star of [1,2,3,4,5]" 
+                  [class.filled]="star <= product.rating">
+                  ★
+                </span>
+              </div>
+              <span class="rating-count" *ngIf="product.reviewCount">
+                ({{ product.reviewCount }})
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="swiper-button-prev">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </div>
+    <div class="swiper-button-next">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+
+    <!-- Paginación -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>

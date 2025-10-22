@@ -1,0 +1,122 @@
+/* =================================
+   INFINITE MARQUEE - BY ALEXANDER STYLE
+   ================================= */
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 2rem;
+}
+
+.separator {
+  margin: 0 1rem;
+  font-size: 1.25rem;
+}
+
+/* Animación de scroll */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pausa en hover */
+.pause-on-hover:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* =================================
+   TICKER AMARILLO (BY ALEXANDER)
+   ================================= */
+
+.marquee-container.ticker-yellow .marquee-item {
+  color: #000;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  padding: 0 1.5rem;
+}
+
+.marquee-container.ticker-yellow .separator {
+  color: #000;
+  font-size: 1rem;
+}
+
+/* =================================
+   TICKER OSCURO (FOOTER)
+   ================================= */
+
+.marquee-container.ticker-dark .marquee-item {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+}
+
+.marquee-container.ticker-dark .separator {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* =================================
+   OTRAS VARIANTES
+   ================================= */
+
+.marquee-container.minimal {
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.marquee-container.neon {
+  background: linear-gradient(90deg, 
+    rgba(0, 217, 255, 0.05) 0%, 
+    rgba(0, 217, 255, 0.1) 50%, 
+    rgba(0, 217, 255, 0.05) 100%
+  );
+}
+
+.marquee-container.neon .marquee-item {
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* =================================
+   RESPONSIVE
+   ================================= */
+
+@media (max-width: 768px) {
+  .marquee-item {
+    font-size: 0.75rem;
+    padding: 0 1rem;
+  }
+  
+  .separator {
+    margin: 0 0.5rem;
+    font-size: 1rem;
+  }
+
+  .marquee-container.ticker-yellow .marquee-item,
+  .marquee-container.ticker-dark .marquee-item {
+    font-size: 0.75rem;
+  }
+}

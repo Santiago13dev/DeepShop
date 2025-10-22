@@ -1,5 +1,17 @@
 import { Injectable, signal, computed } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Product, CartItem } from './wishlist.service';
+
+/**
+ * Interfaz del carrito
+ */
+export interface Cart {
+  items: CartItem[];
+  count: number;
+  total: number;
+  subtotal: number;
+  discountTotal: number;
+}
 
 /**
  * Servicio de Carrito
@@ -46,6 +58,19 @@ export class CartService {
   constructor() {
     // Cargar carrito del localStorage
     this.loadFromStorage();
+  }
+
+  /**
+   * Obtener el carrito como Observable
+   */
+  getCart(): Observable<Cart> {
+    return of({
+      items: this.cartItems(),
+      count: this.count(),
+      total: this.total(),
+      subtotal: this.subtotal(),
+      discountTotal: this.discountTotal()
+    });
   }
 
   /**

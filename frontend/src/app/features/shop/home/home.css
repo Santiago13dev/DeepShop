@@ -1,0 +1,575 @@
+/* =================================
+   ULTRA MINIMALISTA - PERMIAN STYLE
+   ================================= */
+
+.minimal-home {
+  background: #0A0E1A !important;
+  min-height: 100vh !important;
+}
+
+/* IMPORTANTE: Elementos visibles por defecto */
+.fade-in-up,
+.fade-in-left,
+.fade-in-right,
+.scale-in,
+.fade-in,
+.stagger-child,
+.hero-pre-title,
+.hero-main-title,
+.hero-sub-title,
+.hero-description,
+.hero-button,
+.hero-scroll {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* =================================
+   TICKER AMARILLO - BY ALEXANDER STYLE
+   ================================= */
+
+.ticker-top {
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #FFD700 !important;
+  padding: 0.75rem 0;
+  border-bottom: 2px solid #000;
+}
+
+.ticker-bottom {
+  background: #000 !important;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 4rem;
+}
+
+/* =================================
+   HERO MINIMALISTA
+   ================================= */
+
+.hero-minimal {
+  position: relative;
+  min-height: 100vh;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(0, 217, 255, 0.02) 99px, rgba(0, 217, 255, 0.02) 100px),
+    repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(0, 217, 255, 0.02) 99px, rgba(0, 217, 255, 0.02) 100px);
+  opacity: 0.5;
+}
+
+.hero-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.hero-center {
+  margin-bottom: 4rem;
+}
+
+.title-box {
+  margin-bottom: 2rem;
+}
+
+.pre-title {
+  display: block !important;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.5rem;
+}
+
+.main-title {
+  font-size: 8rem !important;
+  font-weight: 300 !important;
+  font-family: 'Space Grotesk', sans-serif;
+  color: white !important;
+  line-height: 0.9 !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em;
+}
+
+.sub-title {
+  display: block !important;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-desc {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.5) !important;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.btn-group {
+  display: flex !important;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-minimal-primary,
+.btn-minimal-secondary {
+  padding: 1rem 3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  display: inline-block !important;
+}
+
+.btn-minimal-primary::after,
+.btn-minimal-secondary::after {
+  display: none !important;
+}
+
+.btn-minimal-primary {
+  background: white !important;
+  color: #0A0E1A !important;
+  border-color: white !important;
+}
+
+.btn-minimal-primary:hover {
+  background: transparent !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.btn-minimal-secondary {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-minimal-secondary:hover {
+  border-color: white !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.scroll-minimal {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.3)) !important;
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(10px); }
+}
+
+.scroll-minimal span {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* =================================
+   DIVIDER
+   ================================= */
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05) !important;
+  margin: 6rem 0;
+}
+
+/* =================================
+   FEATURES MINIMALISTA
+   ================================= */
+
+.features-minimal {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.feature-item-minimal {
+  display: flex !important;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.feat-icon-svg {
+  width: 40px !important;
+  height: 40px !important;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.feature-item-minimal:hover .feat-icon-svg {
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.feat-icon-svg svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+.feat-text h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white !important;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.feat-text p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* =================================
+   PRODUCTS SECTION
+   ================================= */
+
+.products-minimal {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4) !important;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.section-title-minimal {
+  font-size: 3rem !important;
+  font-weight: 300 !important;
+  color: white !important;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* =================================
+   CATEGORIES MINIMALISTA - FORZADO VISIBLE
+   ================================= */
+
+.categories-minimal {
+  padding: 4rem 2rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.cat-grid-minimal {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 2rem !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-item-minimal {
+  display: block !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-item-minimal::after {
+  display: none !important;
+}
+
+.cat-item-minimal:hover {
+  transform: translateY(-5px);
+}
+
+.cat-img-box {
+  width: 100% !important;
+  aspect-ratio: 1 !important;
+  overflow: hidden !important;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.6s ease;
+  filter: grayscale(0.3) !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-item-minimal:hover .cat-img-box img {
+  transform: scale(1.05) !important;
+  filter: grayscale(0) !important;
+}
+
+.cat-name-wrapper {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-name {
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  color: white !important;
+  letter-spacing: 0.05em;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-arrow {
+  width: 20px !important;
+  height: 20px !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.3s ease;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.cat-item-minimal:hover .cat-arrow {
+  color: white !important;
+  transform: translateX(5px);
+}
+
+/* =================================
+   NEWSLETTER MINIMALISTA
+   ================================= */
+
+.newsletter-minimal {
+  padding: 6rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.news-title {
+  font-size: 2.5rem !important;
+  font-weight: 300 !important;
+  color: white !important;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.news-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5) !important;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.news-form-minimal {
+  display: flex !important;
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: border-color 0.3s ease;
+}
+
+.news-form-minimal:focus-within {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.news-input {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  font-size: 0.9375rem;
+  font-weight: 300;
+}
+
+.news-input:focus {
+  outline: none;
+}
+
+.news-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.news-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 2rem;
+  background: white !important;
+  color: #0A0E1A !important;
+  border: none !important;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.news-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.news-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform: translateX(2px);
+}
+
+.news-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* =================================
+   RESPONSIVE
+   ================================= */
+
+@media (max-width: 1024px) {
+  .main-title {
+    font-size: 6rem !important;
+  }
+
+  .section-title-minimal {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-minimal {
+    padding-top: 100px;
+  }
+
+  .main-title {
+    font-size: 4rem !important;
+  }
+
+  .sub-title {
+    font-size: 1.25rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-minimal-primary,
+  .btn-minimal-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cat-grid-minimal {
+    grid-template-columns: 1fr !important;
+  }
+
+  .news-form-minimal {
+    flex-direction: column;
+  }
+
+  .news-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-title-minimal {
+    font-size: 2rem !important;
+  }
+
+  .news-title {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 3rem !important;
+  }
+
+  .pre-title {
+    font-size: 0.625rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  .divider-line {
+    margin: 4rem 0;
+  }
+
+  .feat-icon-svg {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .ticker-top {
+    top: 65px;
+  }
+}
