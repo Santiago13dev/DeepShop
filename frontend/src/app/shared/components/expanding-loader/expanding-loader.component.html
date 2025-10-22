@@ -1,0 +1,35 @@
+<!-- Expanding Loader - Estilo PERMIAN -->
+<div 
+  *ngIf="isVisible"
+  [@loaderState]="isVisible ? 'visible' : 'hidden'"
+  class="loader-permian">
+  
+  <!-- Cuadrado expansivo azul -->
+  <div 
+    class="expanding-box"
+    [class.expand]="isExpanding">
+  </div>
+
+  <!-- Contenido centrado -->
+  <div class="loader-content">
+    <!-- Logo DEEPSHOP -->
+    <div class="logo-box">
+      <h1 class="logo-deepshop">
+        <span class="logo-deep">DEEP</span><span class="logo-shop">SHOP</span>
+      </h1>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-wrapper">
+      <div class="progress-bar-permian">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Texto de carga -->
+    <p class="loading-text">CARGANDO EXPERIENCIA</p>
+  </div>
+
+  <!-- Grid de fondo -->
+  <div class="loader-grid"></div>
+</div>
