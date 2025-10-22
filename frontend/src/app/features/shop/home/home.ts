@@ -1,107 +1,100 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductCard } from '../../../shared/components/product-card/product-card';
+import { InfiniteMarqueeComponent } from '../../../shared/components/infinite-marquee/infinite-marquee.component';
+import { HorizontalProductSliderComponent } from '../../../shared/components/horizontal-product-slider/horizontal-product-slider.component';
+import { AnimationService } from '../../../core/services/animation.service';
 
 /**
  * Componente Home
- * Página principal del e-commerce
+ * Página principal con diseño ultra minimalista estilo PERMIAN
  */
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProductCard],
+  imports: [
+    CommonModule, 
+    RouterLink,
+    InfiniteMarqueeComponent,
+    HorizontalProductSliderComponent
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
-  // Productos destacados
-  featuredProducts = signal([
-    {
-      id: '1',
-      name: 'iPhone 15 Pro Max',
-      price: 1299.99,
-      image: 'https://images.unsplash.com/photo-1696446702183-cbd80474ea88?w=500',
-      rating: 4.8,
-      reviews: 245,
-      discount: 10,
-    },
-    {
-      id: '2',
-      name: 'MacBook Air M2',
-      price: 1199.99,
-      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500',
-      rating: 4.9,
-      reviews: 189,
-    },
-    {
-      id: '3',
-      name: 'AirPods Pro 2',
-      price: 249.99,
-      image: 'https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=500',
-      rating: 4.7,
-      reviews: 312,
-      discount: 15,
-    },
-    {
-      id: '4',
-      name: 'Apple Watch Series 9',
-      price: 429.99,
-      image: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=500',
-      rating: 4.6,
-      reviews: 156,
-    },
-  ]);
-
+export class Home implements OnInit, AfterViewInit, OnDestroy {
+  
   // Categorías destacadas
-  categories = signal([
+  categories = [
     {
+      id: 1,
       name: 'Electrónica',
-      image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500',
-      count: 245,
+      slug: 'electronica',
+      image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=600&fit=crop',
+      icon: '⚡'
     },
     {
-      name: 'Moda',
-      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=500',
-      count: 189,
+      id: 2,
+      name: 'Fashion',
+      slug: 'fashion',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=600&fit=crop',
+      icon: '👔'
     },
     {
-      name: 'Hogar',
-      image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=500',
-      count: 312,
-    },
-    {
+      id: 3,
       name: 'Deportes',
-      image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500',
-      count: 156,
-    },
-  ]);
-
-  // Beneficios
-  benefits = [
-    {
-      icon: 'truck',
-      title: 'Envío Gratis',
-      description: 'En compras superiores a $50',
+      slug: 'deportes',
+      image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=600&fit=crop',
+      icon: '🏃'
     },
     {
-      icon: 'shield',
-      title: 'Compra Segura',
-      description: 'Protección de datos garantizada',
-    },
-    {
-      icon: 'refresh',
-      title: 'Devoluciones',
-      description: '30 días para devoluciones',
-    },
-    {
-      icon: 'support',
-      title: 'Soporte 24/7',
-      description: 'Estamos aquí para ayudarte',
-    },
+      id: 4,
+      name: 'Hogar',
+      slug: 'hogar',
+      image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=600&fit=crop',
+      icon: '🏠'
+    }
   ];
 
-  ngOnInit() {
-    console.log('Home component initialized');
+  // Características/beneficios
+  features = [
+    {
+      icon: '🚚',
+      title: 'Envío Gratis',
+      description: 'En compras mayores a $50.000'
+    },
+    {
+      icon: '🔒',
+      title: 'Pago Seguro',
+      description: 'Transacciones 100% protegidas'
+    },
+    {
+      icon: '↩️',
+      title: 'Devoluciones',
+      description: '30 días para devoluciones'
+    },
+    {
+      icon: '🎁',
+      title: 'Recompensas',
+      description: 'Programa de puntos exclusivo'
+    }
+  ];
+
+  constructor(private animationService: AnimationService) {}
+
+  ngOnInit(): void {
+    // Inicialización
+  }
+
+  ngAfterViewInit(): void {
+    // Inicializar animaciones de scroll después de que el DOM esté listo
+    setTimeout(() => {
+      this.animationService.initScrollAnimations();
+      this.animationService.initParallax();
+    }, 100);
+  }
+
+  ngOnDestroy(): void {
+    // Limpiar animaciones al destruir el componente
+    this.animationService.cleanup();
   }
 }
