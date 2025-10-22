@@ -1,1 +1,205 @@
-/* Estilos del Navbar */
+/* =================================
+   NAVBAR ULTRA MINIMALISTA - PERMIAN
+   ================================= */
+
+.navbar-minimal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 14, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.navbar-minimal.scrolled {
+  background: rgba(10, 14, 26, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+/* Logo minimalista */
+.logo-minimal {
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo-minimal:hover {
+  opacity: 0.7;
+}
+
+.logo-text-minimal {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+/* Menu Desktop */
+.nav-menu-minimal {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link-minimal {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link-minimal::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link-minimal:hover,
+.nav-link-minimal.active {
+  color: white;
+}
+
+.nav-link-minimal:hover::after,
+.nav-link-minimal.active::after {
+  width: 100%;
+}
+
+/* Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-icon {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon:hover {
+  color: white;
+}
+
+.icon-minimal {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: white;
+  color: #0A0E1A;
+  font-size: 0.625rem;
+  font-weight: 700;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Menu */
+.mobile-menu-minimal {
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 14, 26, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-menu-minimal.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-link-minimal {
+  display: block;
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color 0.3s ease;
+}
+
+.mobile-link-minimal:hover,
+.mobile-link-minimal.active {
+  color: white;
+}
+
+.mobile-link-minimal:last-child {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-container {
+    gap: 2rem;
+  }
+
+  .nav-menu-minimal {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .logo-text-minimal {
+    font-size: 1.125rem;
+  }
+
+  .icon-minimal {
+    width: 20px;
+    height: 20px;
+  }
+}
