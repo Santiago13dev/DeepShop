@@ -1,0 +1,17 @@
+<div 
+  class="marquee-container"
+  [class.pause-on-hover]="pauseOnHover"
+  [ngClass]="className">
+  
+  <div 
+    class="marquee-content"
+    [ngStyle]="animationStyle">
+    
+    <span 
+      *ngFor="let item of marqueeItems; let i = index"
+      class="marquee-item">
+      {{ item }}
+      <span class="separator">{{ separator }}</span>
+    </span>
+  </div>
+</div>
